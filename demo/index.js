@@ -1,7 +1,7 @@
 /* eslint no-alert: [0] */
 
 import React, { Component } from 'react';
-import AutocompleteDemo from './autocomplete';
+import { render } from 'react-dom';
 import Form from '../';
 
 import {
@@ -53,7 +53,6 @@ export default class FormDemo extends Component {
           initialValues={this.initialValues}
           validations={this.validations}
           onSubmit={this.submitHandler}>
-
           <TextField name="name" label="Name" />
           <EmailField name="email" label="Email address" />
           <PasswordField name="password" label="Password" />
@@ -65,9 +64,9 @@ export default class FormDemo extends Component {
           ]} />
           <TextareaField name="biography" label="Biography" />
         </Form>
-
-        <AutocompleteDemo />
       </div>
     );
   }
 }
+
+render(<FormDemo />, document.getElementById('root'));

@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import validationState from '../state';
-import Throbber from '../../throbber';
 
 export default class Field extends Component {
   static propTypes = {
@@ -15,7 +14,6 @@ export default class Field extends Component {
       failure: (errors) => {
         return <span className="mg-form-message-error">{errors.join(', ')}</span>;
       },
-      validating: () => <Throbber />,
       _: () => null,
     }, this.props.state);
   }

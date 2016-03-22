@@ -2,7 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import R from 'ramda';
 import Promise from 'bluebird';
 import validationState from './state';
-import Button from '../button';
 
 export default class Form extends Component {
 
@@ -135,7 +134,7 @@ export default class Form extends Component {
 
   renderSubmitButton() {
     return this.props.renderSubmitButton
-      ? <Button value="Save" disabled={this.state.disabled} />
+      ? <button className="mg-button" disabled={this.state.disabled}>Save</button>
       : null;
   }
 
