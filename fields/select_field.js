@@ -7,7 +7,7 @@ class SelectField extends Component {
     label: PropTypes.string,
     name: PropTypes.string.isRequired,
     options: PropTypes.array.isRequired,
-    state: PropTypes.array.isRequired,
+    state: PropTypes.object.isRequired,
     value: PropTypes.string,
     onChange: PropTypes.func.isRequired,
     onBlur: PropTypes.func.isRequired,

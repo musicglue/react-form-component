@@ -8,7 +8,7 @@ class TextareaField extends Component {
     className: PropTypes.string,
     label: PropTypes.string,
     name: PropTypes.string.isRequired,
-    state: PropTypes.array.isRequired,
+    state: PropTypes.object.isRequired,
     value: PropTypes.string,
     onChange: PropTypes.func.isRequired,
     onBlur: PropTypes.func.isRequired,

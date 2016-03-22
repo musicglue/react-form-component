@@ -13,7 +13,7 @@ class InputField extends Component {
     name: PropTypes.string.isRequired,
     placeholder: PropTypes.string,
     prefix: PropTypes.string,
-    state: PropTypes.array.isRequired,
+    state: PropTypes.object.isRequired,
     suffix: PropTypes.string,
     type: PropTypes.string.isRequired,
     value: PropTypes.string,
@@ -38,7 +38,6 @@ class InputField extends Component {
   render() {
     const { children, label, name, onBlur, onChange, prefix, state,
       suffix, type, value, ...other } = this.props;
-
     return (
       <Field
         label={label}

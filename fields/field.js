@@ -6,7 +6,7 @@ export default class Field extends Component {
     children: PropTypes.node.isRequired,
     label: PropTypes.string,
     targetId: PropTypes.string.isRequired,
-    state: PropTypes.array.isRequired,
+    state: PropTypes.object.isRequired,
   }
 
   renderValidations() {
