@@ -19,7 +19,7 @@ import {
 
 export default class FormDemo extends Component {
   initialValues = {
-    name: '',
+    name: 'initial name here',
     email: '',
     password: '',
     country: 'gb',
@@ -37,8 +37,8 @@ export default class FormDemo extends Component {
 
   submitHandler({ name, email }) {
     window.alert(
-      'Thanks for signing up, ' + name + '.\n'
-      + 'An email has been sent to ' + email);
+      `Thanks for signing up, ${name}.\n
+      An email has been sent to ${email}`);
   }
 
   render() {
@@ -52,16 +52,18 @@ export default class FormDemo extends Component {
           className="mg-spacer-bottom"
           initialValues={this.initialValues}
           validations={this.validations}
-          onSubmit={this.submitHandler}>
+          onSubmit={this.submitHandler}
+        >
           <TextField name="name" label="Name" />
           <EmailField name="email" label="Email address" />
           <PasswordField name="password" label="Password" />
           <SelectField name="country" label="Country" options={[
-            {value: 'au', text: 'Australia'},
-            {value: 'fr', text: 'France'},
-            {value: 'gb', text: 'United Kingdom'},
-            {value: 'us', text: 'United States'},
-          ]} />
+            { value: 'au', text: 'Australia' },
+            { value: 'fr', text: 'France' },
+            { value: 'gb', text: 'United Kingdom' },
+            { value: 'us', text: 'United States' },
+          ]}
+          />
           <TextareaField name="biography" label="Biography" />
         </Form>
       </div>

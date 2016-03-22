@@ -20,9 +20,8 @@ class SelectField extends Component {
   }
 
   renderOptions() {
-    return this.props.options.map(({ value, text }) => {
-      return <option key={value} value={value}>{text}</option>;
-    });
+    return this.props.options.map(({ value, text }) =>
+      <option key={value} value={value}>{text}</option>);
   }
 
   render() {
@@ -30,14 +29,16 @@ class SelectField extends Component {
       <Field
         label={this.props.label}
         state={this.props.state}
-        targetId={this.state.id}>
+        targetId={this.state.id}
+      >
         <select
           className="mg-form-select"
           name={this.props.name}
           id={this.state.id}
           value={this.props.value}
           onChange={event => this.props.onChange(event.target.value)}
-          onBlur={event => this.props.onBlur(event.target.value)}>
+          onBlur={event => this.props.onBlur(event.target.value)}
+        >
           {this.renderOptions()}
         </select>
       </Field>

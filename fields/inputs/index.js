@@ -3,7 +3,6 @@ import classNames from 'classnames';
 import InputGroup from './input_group';
 import Field from '../field';
 import formContext from '../form_context';
-import validationState from '../../state';
 
 class InputField extends Component {
   static propTypes = {
@@ -31,7 +30,7 @@ class InputField extends Component {
     return classNames({
       'mg-form-input': true,
       'mg-form-input-success': this.props.state.name === 'success',
-      'mg-form-input-error': this.props.state.name ==='failure',
+      'mg-form-input-error': this.props.state.name === 'failure',
     }, this.props.className);
   }
 
@@ -42,7 +41,8 @@ class InputField extends Component {
       <Field
         label={label}
         state={state}
-        targetId={this.state.id}>
+        targetId={this.state.id}
+      >
         <InputGroup prefix={prefix} suffix={suffix}>
           <input
             { ...other }
@@ -52,7 +52,8 @@ class InputField extends Component {
             value={value}
             type={type}
             onChange={event => onChange(event.target.value)}
-            onBlur={event => onBlur(event.target.value)} />
+            onBlur={event => onBlur(event.target.value)}
+          />
         </InputGroup>
         {children}
       </Field>

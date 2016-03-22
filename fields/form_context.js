@@ -43,7 +43,8 @@ export default WrappedComponent => class extends Component {
         value={value}
         state={this.fieldProps().state}
         onChange={this.onChange}
-        onBlur={this.onBlur} />
+        onBlur={this.onBlur}
+      />
     );
   }
 };

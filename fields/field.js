@@ -11,9 +11,9 @@ export default class Field extends Component {
 
   renderValidations() {
     return validationState.case({
-      failure: (errors) => {
-        return <span className="mg-form-message-error">{errors.join(', ')}</span>;
-      },
+      failure: (errors) => (
+        <span className="mg-form-message-error">{errors.join(', ')}</span>
+      ),
       _: () => null,
     }, this.props.state);
   }

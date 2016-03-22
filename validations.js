@@ -20,7 +20,7 @@ export class MatchesValidation {
   }
 
   get message() {
-    return 'Must match ' + this._message;
+    return `Must match ${this._message}`;
   }
 
   applicable(selfField, blurredField, values) {

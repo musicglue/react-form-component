@@ -1,4 +1,4 @@
-import React, { Children, Component, PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 export default class InputGroup extends Component {
   static propTypes = {
@@ -13,7 +13,7 @@ export default class InputGroup extends Component {
   }
 
   render() {
-    const { children, prefix, suffix } = this.props;
+    const { prefix, suffix } = this.props;
     if (!prefix && !suffix) return this.props.children;
     return (
       <div className="mg-form-input-group">

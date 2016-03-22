@@ -1,7 +1,6 @@
 import chai from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 import jsdom from 'jsdom';
-import React from 'react';
 
 chai.use(chaiEnzyme());
 

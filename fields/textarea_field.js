@@ -25,14 +25,16 @@ class TextareaField extends Component {
       <Field
         label={this.props.label}
         state={this.props.state}
-        targetId={this.state.id}>
+        targetId={this.state.id}
+      >
         <textarea
           className={classNames('mg-form-input', this.props.className)}
           name={this.props.name}
           id={this.state.id}
           value={this.props.value}
           onChange={event => this.props.onChange(event.target.value)}
-          onBlur={event => this.props.onBlur(event.target.value)} />
+          onBlur={event => this.props.onBlur(event.target.value)}
+        />
       </Field>
     );
   }

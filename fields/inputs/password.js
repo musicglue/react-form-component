@@ -1,6 +1,4 @@
 import React from 'react';
 import InputField from '.';
 
-export default (props) => {
-  return <InputField {...props} type="password" />;
-};
+export default (props) => <InputField {...props} type="password" />;

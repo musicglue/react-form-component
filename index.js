@@ -23,19 +23,19 @@ export default class Form extends Component {
     renderSubmitButton: true,
   }
 
-  getChildContext = () => {
-    return {
-      getFieldProps: (name) => {
-        return {
+  getChildContext = () => (
+    {
+      getFieldProps: (name) => (
+        {
           value: (this.state.values[name] || null),
           state: (this.state.states[name] || validationState.neutral()),
           onChange: (value, callback) => this.setFieldValue(name, value, callback),
           onBlur: () => this.validateForm(name),
-        };
-      },
+        }
+      ),
       disabled: this.state.disabled,
-    };
-  }
+    }
+  )
 
   componentWillMount() {
     this.setState({
@@ -46,19 +46,18 @@ export default class Form extends Component {
   }
 
   componentWillReceiveProps() {
-    this.setState({disabled: true});
+    this.setState({ disabled: true });
   }
 
   setFieldValue = (name, value, callback) => {
-    const values = R.merge(this.state.values, {[name]: value});
+    const values = R.merge(this.state.values, { [name]: value });
     const disabled = this.isFormDisabled(values, this.state.states);
     this.setState({ values, disabled }, callback);
   }
 
   setPendingValidationState(fields) {
-    const pendingState = (memo, fieldName) => {
-      return R.merge(memo, {[fieldName]: validationState.validating()});
-    };
+    const pendingState = (memo, fieldName) =>
+      R.merge(memo, { [fieldName]: validationState.validating() });
     const states = R.reduce(pendingState, this.state.states, fields);
     this.setState({ states });
   }
@@ -88,7 +87,7 @@ export default class Form extends Component {
         ? validationState.success()
         : validationState.failure(failed.map(v => v.message));
 
-      const states = R.merge(this.state.states, {[fieldName]: result});
+      const states = R.merge(this.state.states, { [fieldName]: result });
       const disabled = this.isFormDisabled(this.state.values, states);
 
       this.setState({ states, disabled });
@@ -111,9 +110,9 @@ export default class Form extends Component {
 
   validateForm(initiatingField) {
     return Promise.all(R.toPairs(this.props.validations).map(([fieldName, validations]) => {
-      const applicable = validations.filter(validation => {
-        return validation.applicable(fieldName, initiatingField, this.state.values);
-      });
+      const applicable = validations
+        .filter(validation =>
+          validation.applicable(fieldName, initiatingField, this.state.values));
 
       if (applicable.length === 0) {
         return Promise.resolve(true);
