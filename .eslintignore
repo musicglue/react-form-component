@@ -1,4 +1,1 @@
-src/lib/baguetteBox.js
-src/lib/sweetalert/**/*.js
-src/lib/fitvids.js
-src/lib/locales/**/*.js
+dist/
