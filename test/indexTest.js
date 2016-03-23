@@ -33,9 +33,9 @@ const sampleValidations = {
 };
 
 function createForm(
-    submitHandler = () => {},
     initialValues = sampleInitialValues,
-    validations = sampleValidations
+    validations = sampleValidations,
+    submitHandler = () => {}
 ) {
   return (
     <Form
@@ -59,7 +59,7 @@ function createForm(
   );
 }
 
-describe('ROOT', () => {
+describe('[root]', () => {
   describe('<Form />', () => {
     let wrapper;
 
@@ -85,4 +85,3 @@ describe('ROOT', () => {
     });
   });
 });
-
