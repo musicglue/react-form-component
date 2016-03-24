@@ -2,18 +2,18 @@ import React from 'react';
 import { expect } from 'chai';
 import { mount } from 'enzyme';
 
-import Form from '../index.js';
+import Form from '../src/index.js';
 import {
   EmailField,
   PasswordField,
   SelectField,
   TextField,
   TextareaField,
-} from '../fields';
+} from '../src/fields';
 import {
   RequiredValidation,
   RegexValidation,
-} from '../validations';
+} from '../src/validations';
 
 const sampleInitialValues = {
   name: 'sampleName',

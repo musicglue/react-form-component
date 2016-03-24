@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import Form from '../';
+import Form from '../src/';
 
 import {
   EmailField,
@@ -10,12 +10,12 @@ import {
   SelectField,
   TextField,
   TextareaField,
-} from '../fields';
+} from '../src/fields';
 
 import {
   RequiredValidation,
   RegexValidation,
-} from '../validations';
+} from '../src/validations';
 
 export default class FormDemo extends Component {
   initialValues = {

@@ -1,4 +1,12 @@
+# Logs
 *.log
+
+# Modules
 node_modules
+
+# Transpiled / bundled files
 dist
+/demo/bundle.js
+
+#Apple
 .DS_Store
