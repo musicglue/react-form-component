@@ -9,8 +9,8 @@ function getValidationState(map, state) {
 function renderValidationMessage(validationState) {
   return getValidationState({
     failure: (errors) => <span className="mg-form-message-error">{errors.join(', ')}</span>,
-    validating: () => <span>validating</span>,
-    neutral: () => <span>neutral</span>,
+    validating: () => <span className="mg-form-validation-active" />,
+    neutral: () => <span className="mg-form-validation-neutral" />,
   }, validationState);
 }
 
