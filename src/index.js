@@ -3,6 +3,9 @@ import R from 'ramda';
 import Promise from 'bluebird';
 import validationState from './state';
 
+export * as validations from './validations';
+export * as fields from './fields';
+
 export default class Form extends Component {
 
   static propTypes = {

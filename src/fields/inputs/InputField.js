@@ -51,10 +51,10 @@ class InputField extends Component {
         <InputGroup prefix={prefix} suffix={suffix}>
           <input
             { ...other }
+            { ...{[valueAttr]: value} }
             className={this.className()}
             name={name}
             id={this.state.id}
-            value={value}
             type={type}
             onChange={event => onChange(event.target[valueAttr])}
             onBlur={event => onBlur(event.target[valueAttr])}
