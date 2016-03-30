@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-// import validationState from '../state';
 
 function getValidationState(map, state) {
   const creator = map[state.name];
@@ -16,13 +15,13 @@ function renderValidationMessage(validationState) {
 
 function renderLabel(label, validationState, targetId) {
   return label
-    ?
-    <label className="mg-form-label" htmlFor={targetId} >
-      {label}
-      {renderValidationMessage(validationState)}
-    </label>
-    :
-    null;
+    ? (
+      <label className="mg-form-label" htmlFor={targetId} >
+        {label}
+        {renderValidationMessage(validationState)}
+      </label>
+    )
+    : null;
 }
 
 export default function Field({ children, label, state, targetId }) {

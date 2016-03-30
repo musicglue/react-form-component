@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import Field from './field';
-import formContext from './form_context';
+import Field from './Field';
+import formContext from './formContext';
 
 class SelectField extends Component {
   static propTypes = {

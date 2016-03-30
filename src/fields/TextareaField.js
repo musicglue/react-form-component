@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
-import Field from './field';
-import formContext from './form_context';
+import Field from './Field';
+import formContext from './formContext';
 
 class TextareaField extends Component {
   static propTypes = {
