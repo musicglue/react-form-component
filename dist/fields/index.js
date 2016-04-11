@@ -34,4 +34,13 @@ Object.defineProperty(exports, 'TextareaField', {
   }
 });
 
+var _MoneyField = require('./MoneyField');
+
+Object.defineProperty(exports, 'MoneyField', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_MoneyField).default;
+  }
+});
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
