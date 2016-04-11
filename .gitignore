@@ -1,0 +1,11 @@
+# Logs
+*.log
+
+# Modules
+node_modules
+
+# Transpiled / bundled files
+/demo/bundle.js
+
+#Apple
+.DS_Store
