@@ -1,7 +1,7 @@
 {
   "name": "react-form-component",
   "description": "React form component",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Music Glue",
   "bugs": {
     "url": "https://github.com/musicglue/react-form-component/issues"
@@ -9,10 +9,13 @@
   "contributors": [
     "Peter Horne",
     "John Maxwell",
-    "Jamie Copeland"
+    "Jamie Copeland",
+    "Bjørn Hougaard"
   ],
   "dependencies": {
+    "accounting": "^0.4.1",
     "classnames": "^2.2.3",
+    "js-money": "^0.5.1",
     "ramda": "^0.20.1",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
@@ -38,8 +41,8 @@
     "chai-enzyme": "^0.4.1",
     "enzyme": "^2.2.0",
     "eslint": "^2.5.0",
-    "eslint-config-airbnb": "^6.1.0",
-    "eslint-plugin-react": "^4.2.3",
+    "eslint-config-airbnb": "^6.2.0",
+    "eslint-plugin-react": "^4.3.0",
     "mocha": "^2.4.5",
     "react-addons-test-utils": "^0.14.7",
     "sass-loader": "^3.2.0",

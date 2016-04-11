@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.RegexValidation = exports.MatchesValidation = exports.RequiredValidation = undefined;
+exports.RegexValidation = exports.MatchesValidation = exports.PriceAboveMinimumValidation = exports.RequiredValidation = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /* eslint no-unused-vars: [2, {"args": "after-used", "argsIgnorePattern": "^values$"}] */
 
@@ -32,6 +32,29 @@ var RequiredValidation = exports.RequiredValidation = function () {
   }]);
 
   return RequiredValidation;
+}();
+
+var PriceAboveMinimumValidation = exports.PriceAboveMinimumValidation = function () {
+  function PriceAboveMinimumValidation(minimumPrice) {
+    _classCallCheck(this, PriceAboveMinimumValidation);
+
+    this._minimumPrice = minimumPrice;
+    this.message = 'The amount must be higher than the minimum price of ' + minimumPrice;
+  }
+
+  _createClass(PriceAboveMinimumValidation, [{
+    key: 'applicable',
+    value: function applicable(selfField, blurredField, values) {
+      return selfField === blurredField;
+    }
+  }, {
+    key: 'validate',
+    value: function validate(selfField, values) {
+      return values[selfField] >= this._minimumPrice;
+    }
+  }]);
+
+  return PriceAboveMinimumValidation;
 }();
 
 var MatchesValidation = exports.MatchesValidation = function () {

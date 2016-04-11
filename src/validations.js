@@ -13,6 +13,21 @@ export class RequiredValidation {
   }
 }
 
+export class PriceAboveMinimumValidation {
+  constructor(minimumPrice) {
+    this._minimumPrice = minimumPrice;
+    this.message = `The amount must be higher than the minimum price of ${minimumPrice}`;
+  }
+  
+  applicable(selfField, blurredField, values) {
+    return selfField === blurredField;
+  }
+
+  validate(selfField, values) {
+    return values[selfField] >= this._minimumPrice;
+  }
+}
+
 export class MatchesValidation {
   constructor(target, message) {
     this._target = target;

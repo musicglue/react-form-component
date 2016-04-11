@@ -10,11 +10,13 @@ import {
   SelectField,
   TextField,
   TextareaField,
+  MoneyField,
 } from '../src/fields';
 
 import {
   RequiredValidation,
   RegexValidation,
+  PriceAboveMinimumValidation,
 } from '../src/validations';
 
 export default class FormDemo extends Component {
@@ -24,6 +26,7 @@ export default class FormDemo extends Component {
     password: '',
     country: 'gb',
     biography: '',
+    pwyw: 200,
   }
 
   validations = {
@@ -33,9 +36,10 @@ export default class FormDemo extends Component {
       new RegexValidation(/.+@.+/, 'Invalid email address'),
     ],
     password: [new RequiredValidation()],
+    pwyw: [new PriceAboveMinimumValidation(200), new RequiredValidation()],
   }
 
-  submitHandler({ name, email }) {
+  submitHandler({ name, email, pwyw }) {
     window.alert(
       `Thanks for signing up, ${name}.\n
       An email has been sent to ${email}`);
@@ -57,6 +61,7 @@ export default class FormDemo extends Component {
           <TextField name="name" label="Name" />
           <EmailField name="email" label="Email address" />
           <PasswordField name="password" label="Password" />
+          <MoneyField name="pwyw" currency="GBP" label="PWYW" />
           <SelectField name="country" label="Country" options={[
             { value: 'au', text: 'Australia' },
             { value: 'fr', text: 'France' },
