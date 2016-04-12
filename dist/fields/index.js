@@ -34,12 +34,12 @@ Object.defineProperty(exports, 'TextareaField', {
   }
 });
 
-var _field = require('./field');
+var _Field = require('./Field');
 
 Object.defineProperty(exports, 'Field', {
   enumerable: true,
   get: function get() {
-    return _interopRequireDefault(_field).default;
+    return _interopRequireDefault(_Field).default;
   }
 });
 
