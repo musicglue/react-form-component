@@ -74,7 +74,7 @@ export default class Form extends Component {
   }
 
   hasFailedValidations(states) {
-    const failedValidation = state => state.name === 'Failure';
+    const failedValidation = state => state.name === 'failure';
     return R.any(failedValidation, R.values(states));
   }
 
