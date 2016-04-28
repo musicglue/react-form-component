@@ -1,74 +1,73 @@
-/* eslint no-alert: [0] */
-
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react'
 import { render } from 'react-dom';
-import Form from '../src/';
+import { createStore, combineReducers } from 'redux';
+import { reduxForm, reducer as formReducer } from 'redux-form';
 
-import {
-  EmailField,
-  PasswordField,
-  SelectField,
-  TextField,
-  TextareaField,
-} from '../src/fields';
+class FormDemo extends Component {
+  static propTypes = {
+    fields: PropTypes.object.isRequired,
+    submitting: PropTypes.bool.isRequired,
+    pristine: PropTypes.bool.isRequired,
+  };
 
-import {
-  RequiredValidation,
-  RegexValidation,
-} from '../src/validations';
+  static fields = [ 'name', 'email' ];
 
-export default class FormDemo extends Component {
-  initialValues = {
-    name: 'initial name here',
-    email: '',
-    password: '',
-    country: 'gb',
-    biography: '',
+  static validate = values => {
+    const errors = {};
+
+    if (!values.name) {
+      errors.name = 'Required';
+    }
+
+    if (!values.email) {
+      errors.email = 'Required'
+    } else if (!/.+@.+/.test(values.email)) {
+      errors.email = 'Invalid email address'
+    }
+
+    return errors;
   }
 
-  validations = {
-    name: [new RequiredValidation()],
-    email: [
-      new RequiredValidation(),
-      new RegexValidation(/.+@.+/, 'Invalid email address'),
-    ],
-    password: [new RequiredValidation()],
-  }
-
-  submitHandler({ name, email }) {
-    window.alert(
-      `Thanks for signing up, ${name}.\n
-      An email has been sent to ${email}`);
+  submitHandler = event => {
+    event.preventDefault();
+    console.log(arguments);
+    console.log(this);
   }
 
   render() {
+    const { fields: { name, email }, submitting, pristine, invalid } = this.props;
+
     return (
-      <div>
-        <h1>Form</h1>
-
-        <p>This should be a description of form component's features.</p>
-
-        <Form
-          className="mg-spacer-bottom"
-          initialValues={this.initialValues}
-          validations={this.validations}
-          onSubmit={this.submitHandler}
-        >
-          <TextField name="name" label="Name" />
-          <EmailField name="email" label="Email address" />
-          <PasswordField name="password" label="Password" />
-          <SelectField name="country" label="Country" options={[
-            { value: 'au', text: 'Australia' },
-            { value: 'fr', text: 'France' },
-            { value: 'gb', text: 'United Kingdom' },
-            { value: 'us', text: 'United States' },
-          ]}
-          />
-          <TextareaField name="biography" label="Biography" />
-        </Form>
-      </div>
-    );
+      <form onSubmit={this.submitHandler}>
+        <div className="form-group">
+          <label>Name</label>
+          <input type="text" {...name}/>
+          {name.touched && name.error && <div className="validation-error">{name.error}</div>}
+        </div>
+        <div>
+          <label>Email</label>
+          <input type="text" placeholder="Email" {...email}/>
+          {email.touched && email.error && <div>{email.error}</div>}
+        </div>
+        <div>
+          <button type="submit" disabled={submitting || pristine || invalid}>
+            {submitting ? <i/> : <i/>} Submit
+          </button>
+        </div>
+      </form>
+    )
   }
 }
 
-render(<FormDemo />, document.getElementById('root'));
+const Form = reduxForm({
+  form: 'formDemo',
+  fields: FormDemo.fields,
+  validate: FormDemo.validate
+})(FormDemo);
+
+// app
+
+const reducers = { form: formReducer }
+const reducer = combineReducers(reducers);
+const store = createStore(reducer);
+render(<Form store={store} />, document.getElementById('root'));
