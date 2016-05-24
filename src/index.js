@@ -30,7 +30,7 @@ export default class Form extends Component {
     {
       getFieldProps: (name) => (
         {
-          value: (this.state.values[name] || null),
+          value: this.state.values[name],
           state: (this.state.states[name] || validationState.neutral()),
           onChange: (value, callback) => this.setFieldValue(name, value, callback),
           onBlur: () => this.validateForm(name),
