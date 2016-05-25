@@ -47,12 +47,15 @@ function createForm(
       <TextField name="name" label="Name" />
       <EmailField name="email" label="Email address" />
       <PasswordField name="password" label="Password" />
-      <SelectField name="country" label="Country" options={[
-        { value: 'au', text: 'Australia' },
-        { value: 'fr', text: 'France' },
-        { value: 'gb', text: 'United Kingdom' },
-        { value: 'us', text: 'United States' },
-      ]}
+      <SelectField
+        name="country"
+        label="Country"
+        options={[
+          { value: 'au', text: 'Australia' },
+          { value: 'fr', text: 'France' },
+          { value: 'gb', text: 'United Kingdom' },
+          { value: 'us', text: 'United States' },
+        ]}
       />
       <TextareaField name="biography" label="Biography" />
     </Form>
