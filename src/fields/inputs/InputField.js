@@ -51,7 +51,7 @@ class InputField extends Component {
         <InputGroup prefix={prefix} suffix={suffix}>
           <input
             { ...other }
-            { ...{[valueAttr]: value} }
+            { ...{ [valueAttr]: value } }
             className={this.className()}
             name={name}
             id={this.state.id}

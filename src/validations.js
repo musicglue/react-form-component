@@ -15,31 +15,31 @@ export class RequiredValidation {
 
 export class MatchesValidation {
   constructor(target, message) {
-    this._target = target;
-    this._message = message || target;
+    this.target = target;
+    this.message = message || target;
   }
 
   get message() {
-    return `Must match ${this._message}`;
+    return `Must match ${this.message}`;
   }
 
   applicable(selfField, blurredField, values) {
     const current = (selfField === blurredField);
-    const target = (this._target === blurredField);
+    const target = (this.target === blurredField);
     const empty = (values[selfField] && values[selfField].length === 0);
 
     return (current || (target && !empty));
   }
 
   validate(selfField, values) {
-    return values[selfField] === values[this._target];
+    return values[selfField] === values[this.target];
   }
 }
 
 
 export class RegexValidation {
   constructor(regex, message) {
-    this._regex = regex;
+    this.regex = regex;
     this.message = message;
   }
 
@@ -48,6 +48,6 @@ export class RegexValidation {
   }
 
   validate(selfField, values) {
-    return this._regex.test(values[selfField]);
+    return this.regex.test(values[selfField]);
   }
 }

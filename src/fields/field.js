@@ -16,10 +16,10 @@ function renderValidationMessage(validationState) {
 function renderLabel(label, validationState, targetId) {
   return label
     ? (
-      <label className="mg-form-label" htmlFor={targetId} >
-        {label}
-        {renderValidationMessage(validationState)}
-      </label>
+    <label className="mg-form-label" htmlFor={targetId} >
+      {label}
+      {renderValidationMessage(validationState)}
+    </label>
     )
     : null;
 }
