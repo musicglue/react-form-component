@@ -32,11 +32,14 @@ class InputField extends Component {
   }
 
   className() {
-    return classNames({
+    const { state: { _name: validationState } } = this.props;
+    const classes = classNames({
       'mg-form-input': true,
-      'mg-form-input-success': this.props.state.name === 'success',
-      'mg-form-input-error': this.props.state.name === 'failure',
+      'mg-form-input-success': validationState === 'success',
+      'mg-form-input-error': validationState === 'failure',
     }, this.props.className);
+
+    return classes;
   }
 
   render() {
