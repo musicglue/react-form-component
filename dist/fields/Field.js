@@ -12,7 +12,7 @@ var _react2 = _interopRequireDefault(_react);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function getValidationState(map, state) {
-  var creator = map[state.name];
+  var creator = map[state._name];
   return creator ? creator(state[0]) : null;
 }
 

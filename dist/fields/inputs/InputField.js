@@ -59,11 +59,15 @@ var InputField = function (_Component) {
   }, {
     key: 'className',
     value: function className() {
-      return (0, _classnames2.default)({
+      var validationState = this.props.state._name;
+
+      var classes = (0, _classnames2.default)({
         'mg-form-input': true,
-        'mg-form-input-success': this.props.state.name === 'success',
-        'mg-form-input-error': this.props.state.name === 'failure'
+        'mg-form-input-success': validationState === 'success',
+        'mg-form-input-error': validationState === 'failure'
       }, this.props.className);
+
+      return classes;
     }
   }, {
     key: 'render',

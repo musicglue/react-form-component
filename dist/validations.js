@@ -38,15 +38,15 @@ var MatchesValidation = exports.MatchesValidation = function () {
   function MatchesValidation(target, message) {
     _classCallCheck(this, MatchesValidation);
 
-    this._target = target;
-    this._message = message || target;
+    this.target = target;
+    this.message = message || target;
   }
 
   _createClass(MatchesValidation, [{
     key: 'applicable',
     value: function applicable(selfField, blurredField, values) {
       var current = selfField === blurredField;
-      var target = this._target === blurredField;
+      var target = this.target === blurredField;
       var empty = values[selfField] && values[selfField].length === 0;
 
       return current || target && !empty;
@@ -54,12 +54,12 @@ var MatchesValidation = exports.MatchesValidation = function () {
   }, {
     key: 'validate',
     value: function validate(selfField, values) {
-      return values[selfField] === values[this._target];
+      return values[selfField] === values[this.target];
     }
   }, {
     key: 'message',
     get: function get() {
-      return 'Must match ' + this._message;
+      return 'Must match ' + this.message;
     }
   }]);
 
@@ -70,7 +70,7 @@ var RegexValidation = exports.RegexValidation = function () {
   function RegexValidation(regex, message) {
     _classCallCheck(this, RegexValidation);
 
-    this._regex = regex;
+    this.regex = regex;
     this.message = message;
   }
 
@@ -82,7 +82,7 @@ var RegexValidation = exports.RegexValidation = function () {
   }, {
     key: 'validate',
     value: function validate(selfField, values) {
-      return this._regex.test(values[selfField]);
+      return this.regex.test(values[selfField]);
     }
   }]);
 

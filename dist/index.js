@@ -66,7 +66,7 @@ var Form = function (_Component) {
       return {
         getFieldProps: function getFieldProps(name) {
           return {
-            value: _this.state.values[name] || null,
+            value: _this.state.values[name],
             state: _this.state.states[name] || _state2.default.neutral(),
             onChange: function onChange(value, callback) {
               return _this.setFieldValue(name, value, callback);
@@ -128,7 +128,7 @@ var Form = function (_Component) {
     key: 'hasFailedValidations',
     value: function hasFailedValidations(states) {
       var failedValidation = function failedValidation(state) {
-        return state.name === 'Failure';
+        return state._name === 'failure';
       };
       return _ramda2.default.any(failedValidation, _ramda2.default.values(states));
     }
