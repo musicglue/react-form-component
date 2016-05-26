@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 
 function getValidationState(map, state) {
-  const creator = map[state.name];
+  const creator = map[state._name];
   return creator ? creator(state[0]) : null;
 }
 
