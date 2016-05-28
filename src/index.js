@@ -1,26 +1,11 @@
 import React, { Component } from 'react';
 import { reduxForm } from 'redux-form';
-import { keys, each, map } from 'lodash';
+import { each, map } from 'lodash';
 
-const FIELDS = {
-  title: {
-    type: 'input',
-    label: 'Title',
-  },
-  categories: {
-    type: 'input',
-    label: 'Categories',
-  },
-  content: {
-    type: 'textarea',
-    label: 'Content',
-  },
-};
-
-function validate(values) {
+function validate(fields, values) {
   const errors = {};
 
-  each(FIELDS, (type, field) => {
+  each(fields, (type, field) => {
     if (!values[field]) errors[field] = `Enter a ${field}`;
   });
 
@@ -31,6 +16,7 @@ class Form extends Component {
   static propTypes = {
     handleSubmit: React.PropTypes.func.isRequired,
     fields: React.PropTypes.object.isRequired,
+    fieldConfig: React.PropTypes.object.isRequired,
   }
 
   onSubmit(props) {
@@ -43,7 +29,7 @@ class Form extends Component {
     return (
       <div className={`FormGroup ${fieldHelper.touched && fieldHelper.invalid ? 'has-danger' : ''}`}>
         <label>{fieldConfig.label}</label>
-        <fieldConfig.type type="text" className="FormControl" {...fieldHelper} />
+        <fieldConfig.element type={fieldConfig.type} className="FormControl" {...fieldHelper} />
         <div className="ErrorMessage">
           {fieldHelper.touched ? fieldHelper.error : ''}
         </div>
@@ -57,15 +43,11 @@ class Form extends Component {
     return (
       <form onSubmit={handleSubmit(props => this.onSubmit(props))}>
         <h3>Create a new Post</h3>
-        {map(FIELDS, this.renderField.bind(this))}
+        {map(this.props.fieldConfig, this.renderField.bind(this))}
         <button type="submit" className="Button Button-primary">Submit</button>
       </form>
     );
   }
 }
 
-export default reduxForm({
-  form: 'Form',
-  fields: keys(FIELDS),
-  validate,
-})(Form);
+export default reduxForm({ form: 'demo', validate })(Form);
