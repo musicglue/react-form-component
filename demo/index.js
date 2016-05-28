@@ -58,7 +58,7 @@ export default class FormDemo extends Component {
   }
 
   submitHandler(props) {
-    console.log(props);
+    console.log('sent', props);
   }
 
   render() {
