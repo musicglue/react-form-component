@@ -1,77 +1,82 @@
-/* eslint no-alert: [0] */
-
 import React, { Component } from 'react';
 import { render } from 'react-dom';
+import { createStore, combineReducers } from 'redux';
+import { Provider } from 'react-redux';
+import { reducer as formReducer } from 'redux-form';
+
 import Form from '../src/';
 
-import {
-  EmailField,
-  PasswordField,
-  SelectField,
-  TextField,
-  TextareaField,
-} from '../src/fields';
-
-import {
-  RequiredValidation,
-  RegexValidation,
-} from '../src/validations';
+const reducers = {
+  form: formReducer,
+};
+const reducer = combineReducers(reducers);
+const store = createStore(reducer);
 
 export default class FormDemo extends Component {
-  initialValues = {
-    name: 'initial name here',
-    email: '',
-    password: '',
-    country: 'gb',
-    biography: '',
+  initialValues = {}
+  validations = {}
+  fields = {
+    text: {
+      element: 'input',
+      type: 'text',
+      label: 'Text input',
+    },
+    password: {
+      element: 'input',
+      type: 'password',
+      label: 'Password input',
+    },
+    email: {
+      element: 'input',
+      type: 'text',
+      label: 'Required Email input',
+    },
+    tel: {
+      element: 'input',
+      type: 'tel',
+      label: 'Tel input',
+    },
+    number: {
+      element: 'input',
+      type: 'number',
+      label: 'Number input',
+    },
+    date: {
+      element: 'input',
+      type: 'date',
+      label: 'Date input',
+    },
+    color: {
+      element: 'input',
+      type: 'color',
+      label: 'Color input',
+    },
+    textarea: {
+      element: 'textarea',
+      label: 'Textarea',
+    },
   }
 
-  validations = {
-    name: [new RequiredValidation()],
-    email: [
-      new RequiredValidation(),
-      new RegexValidation(/.+@.+/, 'Invalid email address'),
-    ],
-    password: [new RequiredValidation()],
-  }
-
-  submitHandler({ name, email }) {
-    window.alert(
-      `Thanks for signing up, ${name}.\n
-      An email has been sent to ${email}`);
+  submitHandler(props) {
+    console.log('sent', props);
   }
 
   render() {
     return (
       <div>
         <h1>Form</h1>
-
-        <p>This should be a description of form component's features.</p>
-
         <Form
-          className="mg-spacer-bottom"
-          initialValues={this.initialValues}
-          validations={this.validations}
-          onSubmit={this.submitHandler}
-        >
-          <TextField name="name" label="Name" />
-          <EmailField name="email" label="Email address" />
-          <PasswordField name="password" label="Password" />
-          <SelectField
-            name="country"
-            label="Country"
-            options={[
-              { value: 'au', text: 'Australia' },
-              { value: 'fr', text: 'France' },
-              { value: 'gb', text: 'United Kingdom' },
-              { value: 'us', text: 'United States' },
-            ]}
-          />
-          <TextareaField name="biography" label="Biography" />
-        </Form>
+          fields={Object.keys(this.fields)}
+          fieldConfig={this.fields}
+          handleSubmit={this.submitHandler}
+        />
       </div>
     );
   }
 }
 
-render(<FormDemo />, document.getElementById('root'));
+render((
+  <Provider store={store}>
+    <FormDemo />
+  </Provider>
+), document.getElementById('root'));

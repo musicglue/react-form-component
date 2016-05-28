@@ -5,8 +5,7 @@
   },
   "env": {
     "browser": true,
-    "mocha": true,
-    "node": true
+    "mocha": true
   },
   "parser": "babel-eslint",
   "extends": "airbnb",
@@ -17,8 +16,7 @@
     "strict": [2, "never"],
     "react/jsx-uses-react": 2,
     "react/jsx-uses-vars": 2,
-    "react/react-in-jsx-scope": 2,
-    "new-cap": [2, {"capIsNew": false}]
+    "react/react-in-jsx-scope": 2
   },
   "plugins": [
     "react"
